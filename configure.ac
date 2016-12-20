@@ -21,6 +21,8 @@ AC_SUBST(INSTALL)
 dnl What OS are we running?
 AC_CANONICAL_HOST
 
+AC_CONFIG_FILES([html/index.php])
+
 dnl Checks for programs.
 AC_PROG_CC
 AC_PROG_MAKE_SET
@@ -373,6 +375,15 @@ AC_ARG_WITH(gd-inc,
 
 
 TRYGD=yep
+
+dnl 'corewindow' is now disabled. Allow it to be enabled if someone wants it
+COREWINDOW=no
+AC_ARG_ENABLE(corewindow,
+	AC_HELP_STRING([--enable-corewindow],
+		[enables the 'corewindow' URL argument]),
+	COREWINDOW=yes
+)
+AC_SUBST(COREWINDOW)
 
 dnl statusmap CGI enabled by default, unless users chooses not to use it
 TRYSTATUSMAP=yep
@@ -774,7 +785,9 @@ AC_SUBST(INITDIR)
 AC_SUBST(USE_EVENTBROKER)
 
 AC_PATH_PROG(PERL,perl)
-
+if test -z "$PERL"; then
+	AC_MSG_ERROR([Cannot continue without perl!])
+fi
 AC_OUTPUT(Makefile lib/Makefile subst pkginfo base/Makefile common/Makefile contrib/Makefile cgi/Makefile html/Makefile module/Makefile worker/Makefile worker/ping/Makefile xdata/Makefile daemon-init t/Makefile t-tap/Makefile)
 
 
