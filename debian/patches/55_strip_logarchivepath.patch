@@ -1,0 +1,13 @@
+Author: Omni Flux <omniflux@omniflux.com>
+Description: stripping the log_archive_path value from cgi.cfg (#578232)
+--- a/cgi/cgiutils.c
++++ b/cgi/cgiutils.c
+@@ -500,7 +500,7 @@
+ 			temp_buffer = strtok(NULL, "\n");
+ 			strncpy(log_archive_path, (temp_buffer == NULL) ? "" : temp_buffer, sizeof(log_archive_path));
+ 			log_archive_path[sizeof(log_archive_path) - 1] = '\x0';
+-			strip(physical_html_path);
++			strip(log_archive_path);
+ 			if(log_archive_path[strlen(log_archive_path) - 1] != '/' && (strlen(log_archive_path) < sizeof(log_archive_path) - 1))
+ 				strcat(log_archive_path, "/");
+ 			}

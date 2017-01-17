@@ -1,0 +1,21 @@
+Author: Alexander Wirt <formorer@debian.org>
+Description: No description.
+--- a/html/index.php
++++ b/html/index.php
+@@ -1,6 +1,7 @@
+ <?php
++date_default_timezone_set('UTC');
+ // Allow specifying main window URL for permalinks, etc.
+-$url = 'main.php';
++$url = 'cgi-bin/tac.cgi';
+
+ if (isset($_GET['corewindow'])) {
+
+--- a/html/main.php
++++ b/html/main.php
+@@ -1,5 +1,6 @@
+ <?php
+ include_once(dirname(__FILE__).'/includes/utils.inc.php');
++date_default_timezone_set('UTC');
+
+ $this_version="3.5.1";

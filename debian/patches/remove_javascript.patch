@@ -1,0 +1,19 @@
+--- a/html/Makefile.in
++++ b/html/Makefile.in
+@@ -32,7 +32,6 @@
+ 	rm -f docs/*~
+ 	rm -f docs/images/*.jbf
+ 	rm -f stylesheets/*~
+-	rm -f js/*~
+ 	rm -rf angularjs/angular-1.3.9
+ 	rm -rf angularjs/ui-utils-0.2.1
+ 	rm -rf bootstrap-3.3.0
+@@ -61,8 +60,6 @@
+ 	do $(INSTALL) -m 664 $(INSTALL_OPTS) $$file $(DESTDIR)$(HTMLDIR)/stylesheets; done
+ 	for file in contexthelp/*.html; \
+ 	do $(INSTALL) -m 664 $(INSTALL_OPTS) $$file $(DESTDIR)$(HTMLDIR)/contexthelp; done
+-	for file in js/*.js; \
+-	do $(INSTALL) -m 664 $(INSTALL_OPTS) $$file $(DESTDIR)$(HTMLDIR)/js; done
+ #	for file in docs/*.html; \
+ #	do $(INSTALL) -m 664 $(INSTALL_OPTS) $$file $(DESTDIR)$(HTMLDIR)/docs; done
+ #	for file in docs/images/*.*; \
